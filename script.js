@@ -68,7 +68,7 @@ const Keyboard = {
         const inputElement = document.querySelector(".use-keyboard-input");
     
         // Mulai pengetikan otomatis saat halaman dimuat
-        this.startAutoTyping("\"For My Dearest, Naifa Nawal Attamimi My Beautiful Sunflower. \n I know I am not the perfect person for you, Not the best caretaker for such a precious flower.\n But I turn my flaws into my strength, And I love you with all of yours. \n I hope you can do the same for me. And if not, I always pray the best for you, That you may find a gardener more worthy than I.\"\n~Ikhsan Dwi Saputra.", 150, () => {
+        this.startAutoTyping("\"Do you think I have forgotten ? \n Do you think I have forgotten ?\n Do you think I have forgotten \n About you ? ", 150, () => {
             // Setelah selesai mengetik, jadikan textarea read-only
             inputElement.setAttribute("readonly", true);
             bloomFlower(); // Fungsi yang dijalankan setelah pengetikan selesai
