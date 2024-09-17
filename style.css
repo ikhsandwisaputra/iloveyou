@@ -1,0 +1,342 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat+Alternates");
+html {
+  height: 220vh;
+  background-image: url("./images/bg-sky4.jpg");
+  background-size: cover;
+  background-position: center bottom; /* Posisikan gambar di tengah bawah */
+  cursor: pointer;
+}
+
+.not-loaded * {
+  animation-play-state: paused !important;
+}
+body {
+  height: 100vh;
+  overflow: hidden;
+  border-bottom: 10vh #339545 solid;
+  box-sizing: border-box;
+  position: relative;
+}
+
+h1 {
+  text-align: center;
+  color: white;
+  font-family: "Montserrat Alternates", sans-serif;
+  font-size: 40px;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  top: 0vh;
+  transform: translate(0, 100vh);
+  animation: move 1s 2.5s forwards;
+}
+
+/* KEYBOARD CSS*/
+.keyboard--invisible {
+  visibility: hidden; /* Sembunyikan keyboard secara visual */
+  opacity: 0; /* Buat keyboard tidak terlihat */
+  pointer-events: none; /* Nonaktifkan interaksi dengan keyboard */
+  transition: opacity 0.4s;
+}
+
+.keyboard {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 5px 0;
+  background: #004134;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+  user-select: none;
+  transition: bottom 0.4s;
+}
+
+/* ADD NEW */
+/* Tampilkan huruf yang diketik di atas keyboard */
+.keyboard__display {
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  color: #ffffff;
+  background-color: #004134;
+  padding: 10px;
+  border-radius: 10px;
+  display: none; /* Akan tampil saat huruf diklik */
+}
+
+/* Efek hover saat tombol ditekan */
+.keyboard__key:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.keyboard__key:active {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+
+.keyboard--hidden {
+  bottom: -100%;
+}
+
+.keyboard__keys {
+  text-align: center;
+}
+
+.keyboard__key {
+  height: 45px;
+  width: 6%;
+  max-width: 90px;
+  margin: 3px;
+  border-radius: 4px;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  font-size: 1.05rem;
+  outline: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: top;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+}
+
+.keyboard__key:active {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.keyboard__key--wide {
+  width: 12%;
+}
+
+.keyboard__key--extra-wide {
+  width: 36%;
+  max-width: 500px;
+}
+
+.keyboard__key--activatable::after {
+  content: "";
+  top: 10px;
+  right: 10px;
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+}
+
+.keyboard__key--active::after {
+  background: #08ff00;
+}
+
+.keyboard__key--dark {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+/* ADD NEW 2 */
+.keyboard__key .key-popup {
+  position: absolute;
+  top: -50px; /* Mengatur posisi di atas tombol */
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  color: #004134;
+  font-size: 1.5rem;
+  padding: 5px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  display: none; /* Awalnya disembunyikan */
+}
+
+.keyboard__key--active .key-popup {
+  display: block; /* Tampilkan popup saat tombol aktif */
+}
+
+/* Gaya untuk memusatkan elemen teks di tengah layar */
+.center-screen {
+  display: flex;
+  justify-content: center; /* Memusatkan secara horizontal */
+  align-items: center; /* Memusatkan secara vertikal */
+  height: 90vh; /* Menyesuaikan dengan tinggi viewport */
+
+}
+
+textarea {
+  position: relative;
+  z-index: 999999999;
+  /* width: 80%; Atur lebar sesuai kebutuhan */
+  /* height: 50%; Atur tinggi sesuai kebutuhan */
+  width: 700px; 
+  height: 500px;
+  background-color: transparent; 
+  color: white; /* Warna teks */
+  font-size: 1.2rem; /* Ukuran teks */
+  text-align: center; /* Pusatkan teks */
+  font-family: "Paytone One", sans-serif;
+    /* font-weight: 400; */
+    /* font-style: normal;   */
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  overflow: hidden; /* Sembunyikan scrollbar */
+  border: none; /* Hapus border */
+  outline: none; /* Hapus outline saat textarea di klik */
+  spellcheck: false; /* Menonaktifkan pemeriksaan ejaan */  
+    white-space: pre-line; /* Agar \n berfungsi untuk membuat baris baru jika menggunakan \n dalam string */
+
+
+}
+
+@keyframes move {
+  0% {
+    transform: translate(0, 100vh);
+  }
+  100% {
+    transform: translate(0vh, 0);
+  }
+}
+.sunflwr {
+  width: 80vmin;
+  height: 80vmin;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+.sunflwr__leaf--left, .sunflwr__leaf--right {
+  width: 0%;
+  height: 20%;
+  border-radius: 0% 50% 0% 50%;
+  position: absolute;
+  background: #6f8e4b;
+  top: 70%;
+  left: 45%;
+  transform: translate(-100%, -50%) rotate(-20deg);
+  animation: sunflwr__leaf forwards 1s 0.5s;
+}
+.sunflwr__leaf--right {
+  top: 80%;
+  left: 55%;
+  transform: translate(0%, -50%) rotate(-70deg);
+}
+@keyframes sunflwr__leaf {
+  0% {
+    width: 0%;
+    border: 0px solid #1c611e;
+  }
+  100% {
+    width: 20%;
+    border: 2px solid #1c611e;
+  }
+}
+.sunflwr__stem {
+  position: absolute;
+  transform: translate(-50%, 0%);
+  width: 5%;
+  height: 60%;
+  background: #556d39;
+  left: 50%;
+  bottom: 0%;
+  /* border: 2px solid black; */
+  animation: sunflwr__stem forwards 1s;
+}
+@keyframes sunflwr__stem {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 60%;
+  }
+}
+.sunflwr__center {
+  border-radius: 50%;
+  background-color: #3c1f03;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  z-index: 2;
+  animation: sunflwr__center 1s 1s forwards;
+}
+@keyframes sunflwr__center {
+  0% {
+    width: 0%;
+    height: 0%;
+  }
+  100% {
+    width: 25%;
+    height: 25%;
+  }
+}
+.sunflwr__pedal--1, .sunflwr__pedal--7, .sunflwr__pedal--12, .sunflwr__pedal--11, .sunflwr__pedal--10, .sunflwr__pedal--9, .sunflwr__pedal--8, .sunflwr__pedal--6, .sunflwr__pedal--5, .sunflwr__pedal--4, .sunflwr__pedal--3, .sunflwr__pedal--2 {
+  border-radius: 50%;
+  background: #f2fe00;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  animation: grow-pedal-back 1s 1.5s forwards;
+}
+.sunflwr__pedal--2 {
+  transform: translate(-50%, -50%) rotate(30deg);
+}
+.sunflwr__pedal--3 {
+  transform: translate(-50%, -50%) rotate(60deg);
+}
+.sunflwr__pedal--4 {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+.sunflwr__pedal--5 {
+  transform: translate(-50%, -50%) rotate(120deg);
+}
+.sunflwr__pedal--6 {
+  transform: translate(-50%, -50%) rotate(150deg);
+}
+@keyframes grow-pedal-back {
+  0% {
+    width: 0%;
+    height: 0%;
+    border: 0px solid black;
+  }
+  100% {
+    width: 15%;
+    height: 45%;
+    border: 2px solid black;
+  }
+}
+.sunflwr__pedal--7, .sunflwr__pedal--12, .sunflwr__pedal--11, .sunflwr__pedal--10, .sunflwr__pedal--9, .sunflwr__pedal--8 {
+  border-radius: 20% 50% 20% 50%;
+  transform: translate(-50%, -50%) rotate(15deg);
+  animation: grow-pedal-front 1s 2s forwards;
+}
+.sunflwr__pedal--8 {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.sunflwr__pedal--9 {
+  transform: translate(-50%, -50%) rotate(75deg);
+}
+.sunflwr__pedal--10 {
+  transform: translate(-50%, -50%) rotate(105deg);
+}
+.sunflwr__pedal--11 {
+  transform: translate(-50%, -50%) rotate(135deg);
+}
+.sunflwr__pedal--12 {
+  transform: translate(-50%, -50%) rotate(165deg);
+}
+@keyframes grow-pedal-front {
+  0% {
+    height: 0%;
+    width: 0%;
+    border: 0px solid black;
+  }
+  100% {
+    height: 35%;
+    width: 10%;
+    border: 2px solid black;
+  }
+}/*# sourceMappingURL=style.css.map */
